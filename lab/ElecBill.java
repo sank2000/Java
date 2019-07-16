@@ -13,7 +13,6 @@ class Bill{
         preread=scan.nextInt();
         System.out.print("Enter the current month reading:");
         curread=scan.nextInt();
-        System.out.print("");
     }
     void calc(){
      read=curread-preread;
