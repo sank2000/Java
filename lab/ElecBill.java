@@ -1,8 +1,6 @@
-package lab;
 import java.util.Scanner;
 class Bill{
-    int custid,type;
-    double preread,curread,read;
+    int custid,preread,curread,type,read;
     double rs;
     String custname;
     void getdata(){
@@ -12,13 +10,12 @@ class Bill{
         System.out.print("Enter customer name:");
         custname=scan.next();
         System.out.print("Enter the previous month reading:");
-        preread=scan.nextDouble();
+        preread=scan.nextInt();
         System.out.print("Enter the current month reading:");
-        curread=scan.nextDouble();
+        curread=scan.nextInt();
+        System.out.print("");
     }
     void calc(){
-    	if(preread>curread)
-    		return;
      read=curread-preread;
      if(type==0)
      {
@@ -47,16 +44,10 @@ class Bill{
      }
     void display(){
         System.out.println("\n\n\n---------ELECTRICITY BILL--------\n" );
-         System.out.println("Customer id        :"+custid);
-         System.out.println("\nCustomer name      :"+custname);
-         if(type==0)
-        	 System.out.println("\nCustomer type      :Domestic");
-         else
-        	 System.out.println("\nCustomer type      :Commercial");
-         System.out.println("\nPrevious Reading   :"+preread);
-         System.out.println("\nCurrent Reading    :"+curread);
-         System.out.println("\nUnits Consumed     :"+read);
-         System.out.printf("\nAmount             :Rs.%.2f",rs);    
+         System.out.println("Customer id:"+custid);
+         System.out.println("\nCustomer name: " + custname);
+         System.out.println("\nReading:"+read);
+         System.out.printf("\nAmount = %.2f ",rs);    
     } 
 }
 public class ElecBill
@@ -72,17 +63,9 @@ public class ElecBill
         for(i=0;i<num;i++)
         {
             obj[i]=new Bill();
-            boolean j = false;
-            do
-            {
-            	if(j)
-            		System.out.printf("\nYou are allowed only to enter 0 or 1 !\n");
-            		
             System.out.printf("\t\tTYPE\n\t0.Domestic\n\t1.Commercial ");
             System.out.printf("\nSelect your type(0/1):");
             obj[i].type=scan.nextInt();
-            j=true;
-            }while(obj[i].type != 0 && obj[i].type != 1);
             obj[i].getdata();
             obj[i].calc();
         }
