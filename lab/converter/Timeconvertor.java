@@ -34,39 +34,38 @@ public class Timeconvertor
             }
         }
     }
-    public void getdata()
-    {
+    public void hrs_to_min()
+    { 
+        System.out.printf("\n\t\tHours to Minutes\n");
         System.out.print("Enter the Hours  :");
         hrs=scan.nextInt();
         System.out.print("Enter the Minutes:");
         min=scan.nextInt();
         System.out.print("Enter the Seconds:");
         sec=scan.nextInt();
-    }
-    public void hrs_to_min()
-    { 
-        System.out.printf("\n\t\tHours to Minutes\n");
-        getdata();
         min=(hrs*60)+min;
         while(sec>60)
         {
             min++;
             sec = sec -60;
         }
-        System.out.println("\tMinute : Seconds  = " + min+" :"+ sec );
+        System.out.printf("\n\t\tMinutes : Seconds  = %.0f : %.0f",min,sec);
     }
     public void min_to_hrs()
     { 
         System.out.printf("\n\t\tMinutes to Hours\n");
-        getdata();
-        hrs=hrs+(min/60);
-        min=(min%60);
+        System.out.print("Enter the Minutes:");
+        min=scan.nextInt();
+        System.out.print("Enter the Seconds:");
+        sec=scan.nextInt();
         while(sec>60)
         {
             min++;
             sec = sec -60;
         }
-        System.out.println("\tHours : Minute : Seconds  = "+hrs+ " :" + min+" :"+ sec);
+        hrs=min/60;
+        min=min%60;
+        System.out.printf("\tHours : Minute : Seconds  =  %.0f : %.0f :%.0f",hrs,min,sec);
             
     } 
     public void hrs_to_sec()
