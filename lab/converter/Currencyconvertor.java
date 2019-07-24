@@ -23,7 +23,7 @@ public class Currencyconvertor
                     i_to_d();
                     break;
                 case 3:
-                    e_to_i();;
+                    e_to_i();
                     break;
                 case 4:
                     i_to_e();
