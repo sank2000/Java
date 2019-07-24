@@ -22,7 +22,7 @@ public class Timeconvertor
                     min_to_hrs();
                     break;
                 case 3:
-                    hrs_to_sec();;
+                    hrs_to_sec();
                     break;
                 case 4:
                     sec_to_hrs();
