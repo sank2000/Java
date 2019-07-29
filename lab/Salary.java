@@ -106,7 +106,7 @@ public class Salary {
                     case 5:
                            System.exit(0);break;
                     default:
-                        System.out.println("\nplease select correct option = ");
+                        System.out.println("\nplease select correct option ");
                 }
        }
 		
