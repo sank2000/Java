@@ -26,7 +26,7 @@ class Employee
     	  pf = bp * 0.12;
     	  bf = bp * 0.001;
     	  grossPay=bp+da+hra;
-    	  netPay=grossPay-(pf-bf);
+    	  netPay=grossPay-(pf+bf);
       }
       void printSlip()
       {
