@@ -1,4 +1,3 @@
-package lab;
 import java.util.Scanner;
 class Bill{
     int custid,type;
