@@ -22,7 +22,7 @@ class StackDefine implements StackMethod
 		System.out.print("Enter the no. of elements:");
 		Scanner scan=new Scanner(System.in);
 		num=scan.nextInt();
-		if(num < max-1)
+		if(num <=max)
 		{
 		    for(int i=1;i<=num;i++)
 		    {
