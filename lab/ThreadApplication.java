@@ -25,11 +25,11 @@ class Even extends Thread
         System.out.println("Square of the number :" +(num*num) );
     }
 }
-class RandomThread
+class RandomThread extends Thread
 {
     Random obj = new Random();
     int num,no;
-    void random()
+    public void run()
     {
         for(int i=0;i<no;i++)
         {
@@ -60,13 +60,9 @@ public class ThreadApplication
     public static void main(String[] args)
     {
         Scanner scan = new Scanner(System.in);
-        RandomThread obj = new RandomThread();
+        RandomThread t1 = new RandomThread();
         System.out.print("Enter the no. of times : ");
-        obj.no=scan.nextInt();
-        Thread t1 = new Thread(()->
-        {
-           obj.random();
-        });
+        t1.no=scan.nextInt();
         t1.start();
     } 
 }
