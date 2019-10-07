@@ -2,121 +2,55 @@ import java.awt.*;
 import javax.swing.*;
 import javax.script.*;
 import java.awt.event.*;
-class Calc extends JFrame implements ActionListener
+class Calcul extends JFrame implements ActionListener
 {
-    JButton b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19;
+    JButton b1,b2,b3;
     JTextField t1;
     Integer num;
-    boolean check=false,add=false,point=false;
-    Calc()
+    boolean check=false,point = false;
+    JPanel p1;
+    String[] str = {"7","8","9","/","4","5","6","*","1","2","3","-",".","0","%","+"};
+    Calcul()
     {
-        t1 = new JTextField();
-        b1 = new JButton();
-        b3 = new JButton();
-        b2 = new JButton();
-        b4 = new JButton();
-        b5 = new JButton();
-        b6 = new JButton();
-        b7 = new JButton();
-        b8 = new JButton();
-        b9 = new JButton();
-        b10 = new JButton();
-        b11 = new JButton();
-        b12 = new JButton();
-        b13 = new JButton();
-        b14 = new JButton();
-        b15 = new JButton();
-        b16 = new JButton();
-        b19 = new JButton();
-        b17 = new JButton();
-        b18 = new JButton();
+        super("CALCULATOR");
+        p1= new JPanel();
+        b1= new JButton();
+        b2= new JButton();
+        b3= new JButton();
+        t1=new JTextField(); 
+        t1.setHorizontalAlignment(JTextField.RIGHT);
+        t1.setFont(new Font("Berlin Sans FB",Font.PLAIN,25));
+        t1.setEditable(false);
+        add(t1);
+        t1.setBounds(10, 10, 450, 70);
+        p1.setBounds(10, 90,360,190);
+        p1.setBackground(Color.GRAY);
+        p1.setLayout(new GridLayout(4,4,10,10));
+        for(int i=0;i<str.length;i++)
+        {
+            JButton b= new JButton(str[i]);
+            b.addActionListener(this);
+            p1.add(b);
+        }
+        add(p1);
+        b1.setText("CLR");
+        add(b1);
+        b1.setBounds(380, 90, 80, 40);
+        b1.addActionListener(this);
+        b2.setText("SCI");
+        add(b2);
+        b2.setBounds(380, 140, 80, 40);
+        b2.addActionListener(this);
+        b3.setText("=");
+        add(b3);
+        b3.setBounds(380, 190, 80, 90);
+        b3.addActionListener(this);
         getContentPane().setBackground(Color.GRAY);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(480,330);
         setLayout(null);
         setVisible(true);
         setResizable(false);
-        t1.setHorizontalAlignment(JTextField.RIGHT);
-        t1.setFont(new Font("Arial Black",Font.BOLD,22));
-        t1.setEditable(false);
-        add(t1);
-        t1.setBounds(10, 10, 440, 70);
-        b1.setText("9");
-        add(b1);
-        b1.setBounds(10, 90, 80, 40);
-        b1.addActionListener(this);
-        b2.setText("8");
-        add(b2);
-        b2.setBounds(100, 90, 80, 40);
-        b2.addActionListener(this);
-        b3.setText("7");
-        add(b3);
-        b3.setBounds(190, 90, 80, 40);
-        b3.addActionListener(this);
-        b4.setText("/");
-        add(b4);
-        b4.setBounds(280, 90, 80, 40);
-        b4.addActionListener(this);
-        b5.setText("4");
-        add(b5);
-        b5.setBounds(10, 140, 80, 40);
-        b5.addActionListener(this);
-        b6.setText("5");
-        add(b6);
-        b6.setBounds(100, 140, 80, 40);
-        b6.addActionListener(this);
-        b7.setText("6");
-        add(b7);
-        b7.setBounds(190, 140, 80, 40);
-        b7.addActionListener(this);
-        b8.setText("+");
-        add(b8);
-        b8.setBounds(280, 240, 80, 40);
-        b8.addActionListener(this);
-        b9.setText("1");
-        add(b9);
-        b9.setBounds(10, 190, 80, 40);
-        b9.addActionListener(this);
-        b10.setText("2");
-        add(b10);
-        b10.setBounds(100, 190, 80, 40);
-        b10.addActionListener(this);
-        b11.setText("3");
-        add(b11);
-        b11.setBounds(190, 190, 80, 40);
-        b11.addActionListener(this);
-        b12.setText("-");
-        add(b12);
-        b12.setBounds(280, 190, 80, 40);
-        b12.addActionListener(this);
-        b13.setText(".");
-        add(b13);
-        b13.setBounds(10, 240, 80, 40);
-        b13.addActionListener(this);
-        b14.setText("0");
-        add(b14);
-        b14.setBounds(100, 240, 80, 40);
-        b14.addActionListener(this);
-        b15.setText("%");
-        add(b15);
-        b15.setBounds(190, 240, 80, 40);
-        b15.addActionListener(this);
-        b16.setText("*");
-        add(b16);
-        b16.setBounds(280, 140, 80, 40);
-        b16.addActionListener(this);
-        b17.setText("CLR");
-        add(b17);
-        b17.setBounds(370, 90, 80, 40);
-        b17.addActionListener(this);
-        b18.setText("SCI");
-        add(b18);
-        b18.setBounds(370, 140, 80, 40);
-        b18.addActionListener(this);
-        b19.setText("=");
-        add(b19);
-        b19.setBounds(370, 190, 80, 90);
-        b19.addActionListener(this);
     }
     public void actionPerformed(ActionEvent e)
     {
@@ -124,7 +58,6 @@ class Calc extends JFrame implements ActionListener
     	{
     		t1.setText("");
     		check=false;
-    		
     	}
         if(e.getActionCommand().equals("1"))
             t1.setText(t1.getText()+"1");
@@ -166,6 +99,7 @@ class Calc extends JFrame implements ActionListener
             t1.setText("");
         else if(e.getActionCommand().equals("%"))
         {
+            check = true;
             num = eval();
             if(num!=null)
                t1.setText(t1.getText()+"  = "+(num*0.01)+"%");
@@ -174,9 +108,10 @@ class Calc extends JFrame implements ActionListener
         {
         	if(point) 
         	{
-        		ScriptEngineManager obj = new ScriptEngineManager();
+        	ScriptEngineManager obj = new ScriptEngineManager();
                 ScriptEngine obj1 = obj.getEngineByName("JavaScript");
                 String s = t1.getText();
+                check=true;
                 try {
                 	 t1.setText(t1.getText()+"  = "+obj1.eval(s));
                 	 point=false;
@@ -184,9 +119,8 @@ class Calc extends JFrame implements ActionListener
                 catch(Exception t)
                 {
                     t1.setText("Wrong format");
-                }
-               
-        	}
+                }               
+            }
             else
             {
 	            num = eval();
@@ -199,7 +133,7 @@ class Calc extends JFrame implements ActionListener
         {
             num=eval();
             check=true;
-            Calc cobj=this;
+            Calcul cobj=this;
             Sci obj = new Sci(this);
             if(num!=null)
             {
@@ -207,13 +141,12 @@ class Calc extends JFrame implements ActionListener
                 String[] str ={"SIN","COS","TAN","SQRT","SQUARE","LOG","LOG 10","EXP"};
                 for(int i=0;i<str.length;i++)
                 {
-                	JMenuItem b= new JMenuItem(str[i]);
+                    JMenuItem b= new JMenuItem(str[i]);
                     b.addActionListener(obj);
                     pop.add(b);
                 }
                 pop.show(cobj,400,200);
-            }
-                
+            }               
          }
       }   
     Integer eval()
@@ -233,11 +166,10 @@ class Calc extends JFrame implements ActionListener
         }
     }
 }
-
 class Sci extends JFrame implements ActionListener
 {
-    Calc obj;
-    Sci(Calc C)
+    Calcul obj;
+    Sci(Calcul C)
     {
         obj=C;
     }
@@ -261,9 +193,10 @@ class Sci extends JFrame implements ActionListener
             obj.t1.setText("EXP("+(obj.t1.getText())+") = "+Math.exp(obj.num));
     }
 }
-public class Calculator
+class Calculator
 {
-    public static void main(String[] args) {
-        new Calc();
+    public static void main(String[] args)
+    {
+        new Calcul();
     }
 }
