@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="trns.ScaleTController">
+   <children>
+      <Circle fx:id="c1" fill="#2c21ff" layoutX="300.0" layoutY="183.0" radius="100.0" stroke="#0af526" strokeType="INSIDE" strokeWidth="5.0" />
+   </children>
+</AnchorPane>

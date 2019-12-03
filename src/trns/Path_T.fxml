@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.ArcTo?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.ClosePath?>
+<?import javafx.scene.shape.CubicCurveTo?>
+<?import javafx.scene.shape.LineTo?>
+<?import javafx.scene.shape.MoveTo?>
+<?import javafx.scene.shape.Path?>
+<?import javafx.scene.shape.QuadCurveTo?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="trns.Path_TController">
+   <children>
+      <Circle fx:id="c" fill="DODGERBLUE" layoutX="89.0" layoutY="103.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+      <Path fx:id="p" fill="DODGERBLUE" layoutX="89.0" layoutY="93.0" stroke="BLACK" strokeType="INSIDE" visible="false">
+          <elements>
+              <MoveTo x="100.0" />
+              <LineTo x="150.0" y="50.0" />
+              <ArcTo radiusX="30.0" radiusY="25" x="200.0" y="100.0" />
+              <QuadCurveTo controlX="300.0" controlY="300.0" y="150.0" />
+              <ClosePath />
+            <CubicCurveTo />
+          </elements>
+      </Path>
+   </children>
+</AnchorPane>

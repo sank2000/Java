@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Polygon?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="trns.FadefController">
+   <children>
+      <Polygon fx:id="p1" layoutX="250.0" layoutY="150.0" points="-113.0, 110.0, 130.0, 110.0, 5.0, -38.0" stroke="BLACK" strokeType="INSIDE">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#e40000" />
+                  <Stop color="#1a00ff" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Polygon>
+   </children>
+</AnchorPane>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Polygon?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="trns.Fill_TController">
+   <children>
+      <Polygon fx:id="t1" fill="DODGERBLUE" layoutX="293.0" layoutY="190.0" points="-85.0, 46.0, 89.0, 46.0, 0.0, -60.0" stroke="BLACK" strokeType="INSIDE" />
+   </children>
+</AnchorPane>
