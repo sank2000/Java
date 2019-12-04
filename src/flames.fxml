@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="319.0" prefWidth="399.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FlamesController">
+   <children>
+      <Label layoutX="48.0" layoutY="87.0" prefHeight="40.0" prefWidth="106.0" text="First Name" />
+      <Label layoutX="48.0" layoutY="151.0" prefHeight="40.0" prefWidth="106.0" text="Second Name" />
+      <TextField fx:id="f1" layoutX="185.0" layoutY="83.0" prefHeight="48.0" prefWidth="192.0" />
+      <TextField fx:id="f2" layoutX="185.0" layoutY="147.0" prefHeight="48.0" prefWidth="192.0" />
+      <Button layoutX="140.0" layoutY="210.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="85.0" text="Find!" />
+      <TextField fx:id="f3" alignment="CENTER" layoutX="89.0" layoutY="257.0" prefHeight="48.0" prefWidth="192.0">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </TextField>
+      <Label alignment="CENTER" layoutX="125.0" layoutY="17.0" prefHeight="40.0" prefWidth="138.0" text="FLAMES" textFill="#f00527">
+         <font>
+            <Font name="System Bold Italic" size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
