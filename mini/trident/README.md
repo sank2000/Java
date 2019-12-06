@@ -16,7 +16,7 @@
     
     
    In order to execute in your PC
-       \* Create one package named trident and then create all these files along with one img package with contains icon of this editor */
+       /* Create one package named trident and then create all these files along with one img package with contains icon of this editor */
        
        
        
