@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="366.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="trident.FontController">
+   <children>
+      <Slider fx:id="size" blockIncrement="1.0" layoutX="99.0" layoutY="213.0" prefHeight="58.0" prefWidth="256.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="16.0" />
+      <ComboBox fx:id="font" layoutX="54.0" layoutY="93.0" prefWidth="150.0" />
+      <Label layoutX="54.0" layoutY="51.0" prefHeight="17.0" prefWidth="101.0" text="Font">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="48.0" layoutY="160.0" prefHeight="17.0" prefWidth="101.0" text="Font Size">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+      </Label>
+      <Button fx:id="ok" layoutX="372.0" layoutY="314.0" mnemonicParsing="false" onAction="#ok" prefHeight="25.0" prefWidth="86.0" text="OK" />
+      <Button fx:id="close" layoutX="481.0" layoutY="314.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="86.0" text="Cancel" />
+      <ListView fx:id="style" layoutX="344.0" layoutY="72.0" prefHeight="105.0" prefWidth="200.0" />
+      <Label layoutX="377.0" layoutY="34.0" prefHeight="34.0" prefWidth="134.0" text="Font Weight">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="number" layoutX="16.0" layoutY="229.0" prefHeight="25.0" prefWidth="65.0" />
+      <Label layoutX="377.0" layoutY="177.0" prefHeight="34.0" prefWidth="134.0" text="Font Style">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="def" layoutX="204.0" layoutY="318.0" mnemonicParsing="false" onAction="#defaultF" prefHeight="20.0" prefWidth="92.0" text="Default">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </CheckBox>
+      <RadioButton layoutX="387.0" layoutY="221.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="77.0" selected="true" text="Regular">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="g1" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="italic" layoutX="387.0" layoutY="246.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="77.0" text="Italic" toggleGroup="$g1">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </RadioButton>
+      <Label layoutX="16.0" layoutY="14.0" prefHeight="17.0" prefWidth="324.0" text="!!! some font and weight may be unsupported in your system" textFill="#f80000" />
+   </children>
+</AnchorPane>

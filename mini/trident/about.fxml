@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="382.0" prefWidth="429.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="trident.AboutController">
+   <children>
+      <ImageView fitHeight="165.0" fitWidth="181.0" layoutX="119.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/trident.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="88.0" layoutY="203.0" prefHeight="40.0" prefWidth="243.0" text="Trident Text Editor">
+         <font>
+            <Font name="System Bold Italic" size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="172.0" layoutY="257.0" prefHeight="17.0" prefWidth="75.0" text="version-san">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Hyperlink layoutX="140.0" layoutY="304.0" text="View Souce Code - GitHub" />
+   </children>
+</AnchorPane>
