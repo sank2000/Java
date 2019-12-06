@@ -1,9 +1,10 @@
 # Trident Text editor
- copyrights : 1.san
-              2.krishna
+ copyrights : @sank200
+              @KrishnaMoorthy12
   
                    It is made with the help of java fx...... It  is simple and cool text editor 
   ------------------------------------------------------------------------------------------------- 
+  Features :    
       -> It has four menus (File,Edit,Format,About) and it has awesome text Area which is in black  and
    it has one status bar which shows the current information like whether the file is saved or not and whether 
    the file is editable or not and it also gives the cureent cursor position.....
