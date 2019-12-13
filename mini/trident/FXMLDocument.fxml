@@ -6,21 +6,24 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="trident.FXMLDocumentController">
-   <children>
-      <MenuBar layoutX="6.0" layoutY="2.0">
+<BorderPane prefHeight="600.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXMLDocumentController">
+   <top>
+      <MenuBar fx:id="Menu" blendMode="DIFFERENCE" prefWidth="682.0" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
               <MenuItem fx:id="newM" mnemonicParsing="false" onAction="#newf" text="NEW" />
                   <MenuItem fx:id="open" mnemonicParsing="false" onAction="#open" text="OPEN..." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="save" mnemonicParsing="false" onAction="#save" text="SAVE" />
                   <MenuItem fx:id="saveAs" mnemonicParsing="false" onAction="#saveAs" text="SAVE AS.." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="close" mnemonicParsing="false" onAction="#close" text="Close" />
                   <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exit" text="Exit" />
             </items>
@@ -30,41 +33,50 @@
               <MenuItem fx:id="cut" mnemonicParsing="false" onAction="#cut" text="Cut" />
                   <MenuItem fx:id="copy" mnemonicParsing="false" onAction="#copy" text="Copy" />
                   <MenuItem fx:id="paste" mnemonicParsing="false" onAction="#paste" text="Paste" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="undo" mnemonicParsing="false" onAction="#undo" text="Undo" />
                   <MenuItem fx:id="redo" mnemonicParsing="false" onAction="#redo" text="Redo" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Format">
                <items>
+                  <CheckMenuItem fx:id="Mode" mnemonicParsing="false" onAction="#ModeAction" selected="true" text="Dark Mode" />
                   <CheckMenuItem fx:id="wrap" mnemonicParsing="false" onAction="#wrap" text="Word warp" />
                   <MenuItem mnemonicParsing="false" onAction="#font" text="Font..." />
                </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
+                  <MenuItem mnemonicParsing="false" onAction="#fileP" text="File Properties" />
+                  <MenuItem mnemonicParsing="false" onAction="#RaQ" text="Reports and Queries" />
               <MenuItem mnemonicParsing="false" onAction="#about" text="About" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
-      <TextArea fx:id="textArea" blendMode="DIFFERENCE" layoutY="27.0" onKeyPressed="#change" prefHeight="543.0" prefWidth="800.0">
+   </top>
+   <center>
+      <TextArea fx:id="textArea" blendMode="DIFFERENCE" onKeyPressed="#change" onMouseClicked="#mouseClick" prefHeight="549.0" prefWidth="789.0" stylesheets="@Scrol.css" BorderPane.alignment="CENTER">
          <font>
             <Font name="Berlin Sans FB" size="16.0" />
-         </font></TextArea>
-      <HBox layoutY="574.0" prefHeight="25.0" prefWidth="719.0">
+         </font>
+      </TextArea>
+   </center>
+   <bottom>
+      <HBox prefHeight="23.0" prefWidth="789.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="17.0" prefWidth="62.0" text="Status   :">
+            <Label text="Status   :  ">
                <padding>
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <Label fx:id="status" prefHeight="17.0" prefWidth="148.0" text="Welcome !" />
-            <Label prefHeight="17.0" prefWidth="289.0" />
-            <Label prefHeight="17.0" prefWidth="61.0" text="Editable   :" />
-            <Label fx:id="edit" prefHeight="17.0" prefWidth="64.0" textAlignment="CENTER" />
-            <Label prefHeight="17.0" prefWidth="32.0" text="Pos   :" />
-            <Label fx:id="pos" prefHeight="17.0" prefWidth="28.0" textAlignment="CENTER" />
+            <Label fx:id="status" text="Welcome !" />
+            <Label maxWidth="1200.0" prefHeight="17.0" prefWidth="462.0" HBox.hgrow="ALWAYS" />
+            <Label prefHeight="17.0" prefWidth="68.0" text="Editable   :" />
+            <Label fx:id="edit" prefHeight="17.0" prefWidth="47.0" text="               " textAlignment="CENTER" />
+            <Label text="Pos   :" />
+            <Label fx:id="pos" prefHeight="17.0" prefWidth="46.0" textAlignment="CENTER" />
          </children>
       </HBox>
-   </children>
-</AnchorPane>
+   </bottom>
+</BorderPane>

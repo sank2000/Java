@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="382.0" prefWidth="429.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="trident.AboutController">
+<AnchorPane id="AnchorPane" prefHeight="382.0" prefWidth="429.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AboutController">
    <children>
       <ImageView fitHeight="165.0" fitWidth="181.0" layoutX="119.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -25,6 +24,6 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Hyperlink layoutX="140.0" layoutY="304.0" text="View Souce Code - GitHub" />
+      <Hyperlink layoutX="140.0" layoutY="304.0" onAction="#clicked" text="View Souce Code - GitHub" underline="true" />
    </children>
 </AnchorPane>

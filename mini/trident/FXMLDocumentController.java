@@ -1,6 +1,3 @@
-
-package trident;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -8,6 +5,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,11 +17,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -40,6 +42,9 @@ public class FXMLDocumentController implements Initializable {
     String Title="Trident Text Editor",fname;
     AlertType savemsg;
     Alert alert;
+    
+    @FXML
+    private MenuBar Menu;
     
     @FXML
     private TextArea textArea;
@@ -66,6 +71,9 @@ public class FXMLDocumentController implements Initializable {
     private MenuItem exit;
     
     @FXML
+    private CheckMenuItem Mode;
+    
+    @FXML
     private CheckMenuItem wrap;
 
     @FXML
@@ -82,6 +90,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private MenuItem redo;
+    
     @FXML
     private Label edit;
 
@@ -106,12 +115,19 @@ public class FXMLDocumentController implements Initializable {
         status.setText("Unsaved New File");
         f1=null;
         s.setTitle(Title+"- untitled");
+        save.setDisable(false);
+        saveAs.setDisable(false);
+        close.setDisable(false);
+        cut.setDisable(false);
+        copy.setDisable(false);
+        paste.setDisable(false);
     }
     // to open a file.....
     @FXML
     public void open (ActionEvent event) throws Exception
     {
         int ch;boolean result;
+        File temp;
         if(s.getTitle().contains("*"))
         {
             result=ConfirmBox.display("confirm!","Do you want to save this file!");
@@ -120,11 +136,20 @@ public class FXMLDocumentController implements Initializable {
                 save();
                 }catch(Exception e){}
         }
+        Menu.setDisable(true);
+        textArea.setDisable(true);
         fc.setTitle("Open");
+        fc.getExtensionFilters().clear();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text doc(*.txt)","*.txt"));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("All files","*.*"));
+        temp=f1;
         f1=fc.showOpenDialog(null);
         if(f1==null)
+        {
+            Menu.setDisable(false);
+            textArea.setDisable(false);
             return;
+        }
         fname=f1.getName();
         FileReader fr = new FileReader(f1);
         BufferedReader br = new BufferedReader(fr);
@@ -140,6 +165,14 @@ public class FXMLDocumentController implements Initializable {
         edit.setText("true");
         status.setText("File Opened");
         s.setTitle(Title+" - "+ fname);
+        save.setDisable(false);
+        saveAs.setDisable(false);
+        close.setDisable(false);
+        cut.setDisable(false);
+        copy.setDisable(false);
+        paste.setDisable(false);
+        Menu.setDisable(false);
+        textArea.setDisable(false);
     }
     // to save a file
      @FXML
@@ -149,10 +182,18 @@ public class FXMLDocumentController implements Initializable {
         {
             fc.setTitle("Save");
             fc.setInitialFileName("*.txt");
+            fc.getExtensionFilters().clear();
             fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text doc(*.txt)","*.txt"));
+            fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("All files","*.*"));
+            Menu.setDisable(true);
+            textArea.setDisable(true);
             f1=fc.showSaveDialog(null);
             if(f1==null)
+            {
+                Menu.setDisable(false);
+                textArea.setDisable(false);
                 return;
+            }
             fname=f1.getName();
         }
         String contents = textArea.getText();
@@ -162,6 +203,8 @@ public class FXMLDocumentController implements Initializable {
         status.setText("Saved");
         s.setTitle(Title+" - "+ fname);
         bw.close();
+        Menu.setDisable(false);
+        textArea.setDisable(false);
         alert.showAndWait();
      }
      // to perform saveas operation
@@ -169,11 +212,19 @@ public class FXMLDocumentController implements Initializable {
      public void saveAs()throws Exception
      {
         fc.setTitle("Save as");
+        fc.getExtensionFilters().clear();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text doc(*.txt)","*.txt"));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("All files","*.*"));
         fc.setInitialFileName("*.txt");
+        Menu.setDisable(true);
+        textArea.setDisable(true);
         f1=fc.showSaveDialog(null);
         if(f1==null)
+        {
+            Menu.setDisable(false);
+            textArea.setDisable(false);
             return;
+        }
         fname=f1.getName();
         String contents = textArea.getText();
         FileWriter fileWritter = new FileWriter(f1, false);
@@ -182,6 +233,8 @@ public class FXMLDocumentController implements Initializable {
         status.setText("Saved");
         s.setTitle(Title+" - "+ fname);
         bw.close();
+        Menu.setDisable(false);
+        textArea.setDisable(false);
         alert.showAndWait();
      }
      // to perform close operation
@@ -197,12 +250,21 @@ public class FXMLDocumentController implements Initializable {
                 save();
                 }catch(Exception e){}
         }
+        f1=null;
         textArea.setText("");
         textArea.setEditable(false);
         edit.setText("false");
         status.setText("Welcome");
         pos.setText("");
         s.setTitle(Title);
+        save.setDisable(true);
+        saveAs.setDisable(true);
+        close.setDisable(true);
+        cut.setDisable(true);
+        copy.setDisable(true);
+        paste.setDisable(true);
+        undo.setDisable(true);
+        redo.setDisable(true);
     }
     @FXML
     void exit(ActionEvent event)
@@ -228,11 +290,27 @@ public class FXMLDocumentController implements Initializable {
     void undo()
     {
         textArea.undo();
+        redo.setDisable(false);
     }
     @FXML
     void redo()
     {
         textArea.redo();
+    }
+     @FXML
+    void ModeAction(ActionEvent event) 
+    {
+        if(Mode.isSelected())
+        {
+            textArea.setBlendMode(BlendMode.DIFFERENCE);
+            Menu.setBlendMode(BlendMode.DIFFERENCE);
+        }
+        else
+        {
+            textArea.setBlendMode(BlendMode.DARKEN);
+            Menu.setBlendMode(BlendMode.DARKEN);
+        }
+
     }
     // to perform wrap operation
     @FXML
@@ -253,23 +331,67 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     void change(KeyEvent event)
     {
+        undo.setDisable(false);
         if(textArea.isEditable())
             pos.setText(String.valueOf(textArea.getCaretPosition()));
         else
+        {
             pos.setText("");
+            try {
+                welcome();
+            } catch (Exception ex) {}
+        }
+        
     }
-   
+    @FXML
+    void mouseClick(MouseEvent event) 
+    {
+        if(textArea.isEditable())
+            pos.setText(String.valueOf(textArea.getCaretPosition()));
+        else
+        {
+            pos.setText("");
+            try {
+                welcome();
+            } catch (Exception ex) {}
+        }
+    }
+    // to create Welcome Message
+    void welcome() throws Exception
+    {
+        Stage n1=new Stage();
+        n1.getIcons().add(new Image("/img/trident.png"));
+        n1.initModality(Modality.APPLICATION_MODAL);
+        Parent root=FXMLLoader.load(getClass().getResource("Welcome.fxml"));
+        n1.setTitle("Welcome!");
+        n1.setResizable(false);
+        Scene s1=new Scene(root);
+        n1.setScene(s1);
+        n1.showAndWait();
+    }
     //to set stage and parent
     public void setss(Stage s,Parent P)
     {
         this.s=s;
         this.p=P;
+        this.s.setOnCloseRequest(c->
+        {
+            boolean result;
+            if(s.getTitle().contains("*"))
+            {
+                result=ConfirmBox.display("confirm!","Do you want to save this file!");
+                if(result)
+                    try{
+                        save();
+                    }catch(Exception e){}
+            }
+        });
     }
     @FXML
     public void about()throws Exception
     {
         Stage n1=new Stage();
-        n1.getIcons().add(new Image("/trident/img/trident.png"));
+        n1.getIcons().add(new Image("/img/trident.png"));
         n1.initModality(Modality.APPLICATION_MODAL);
         Parent root=FXMLLoader.load(getClass().getResource("about.fxml"));
         n1.setTitle("About!");
@@ -278,14 +400,48 @@ public class FXMLDocumentController implements Initializable {
         n1.setScene(s1);
         n1.show();
     }
+    
+    @FXML
+    void fileP(ActionEvent event)throws Exception
+    {
+        Stage window = new Stage();
+        window.initModality(Modality.APPLICATION_MODAL);
+        window.getIcons().add(new Image("/img/trident.png"));
+        FXMLLoader root=new FXMLLoader();
+        root.setLocation(getClass().getResource("FileProper.fxml"));
+        Parent root1 =root.load();
+        FileProperController c = root.getController();
+        c.setP(f1);
+        window.setTitle("File Properties");
+        window.setResizable(false);
+        Scene s1=new Scene(root1);
+        window.setScene(s1);
+        window.show();
+    }
+    
+    @FXML
+    void RaQ(ActionEvent event)throws Exception
+    {
+        Stage n1=new Stage();
+        n1.getIcons().add(new Image("/img/trident.png"));
+        n1.initModality(Modality.APPLICATION_MODAL);
+        Parent root=FXMLLoader.load(getClass().getResource("QaR.fxml"));
+        n1.setTitle("Its for U!");
+        n1.setResizable(false);
+        Scene s1=new Scene(root);
+        n1.setScene(s1);
+        n1.show();
+
+    }
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) 
+    {
         savemsg = AlertType.INFORMATION;
         alert = new Alert(savemsg,"");
         alert.initModality(Modality.APPLICATION_MODAL);
         alert.initOwner(s);
         alert.getDialogPane().setContentText(" Saved successfully");
-       alert.getDialogPane().setHeaderText("");
+        alert.getDialogPane().setHeaderText("");
         fc= new FileChooser();
         fnt=Font.font("Berlin Sans FB",FontWeight.NORMAL,FontPosture.REGULAR,16);
         newM.setAccelerator(KeyCombination.keyCombination("Ctrl+N"));
@@ -310,7 +466,15 @@ public class FXMLDocumentController implements Initializable {
               else
                    s.setTitle(Title+"-*"+fname);
          });
-    }  
-    
+        save.setDisable(true);
+        saveAs.setDisable(true);
+        close.setDisable(true);
+        cut.setDisable(true);
+        copy.setDisable(true);
+        paste.setDisable(true);
+        undo.setDisable(true);
+        redo.setDisable(true);
+       
+    }
     
 }

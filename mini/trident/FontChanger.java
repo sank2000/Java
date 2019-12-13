@@ -1,4 +1,4 @@
-package trident;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,7 +12,7 @@ public class FontChanger
     {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
-        window.getIcons().add(new Image("/trident/img/trident.png"));
+        window.getIcons().add(new Image("/img/trident.png"));
         FXMLLoader root=new FXMLLoader();
         root.setLocation(getClass().getResource("Font.fxml"));
         Parent root1 =root.load();

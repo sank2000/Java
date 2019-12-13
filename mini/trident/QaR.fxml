@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="258.0" prefWidth="347.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="40.0" layoutY="35.0" prefHeight="17.0" prefWidth="243.0" text="San Is Always free to help ">
+         <font>
+            <Font name="System Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="95.0" prefHeight="17.0" prefWidth="243.0" text="And if you found any bugs ,">
+         <font>
+            <Font name="System Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="65.0" prefHeight="17.0" prefWidth="243.0" text="you for your Queries....">
+         <font>
+            <Font name="System Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="129.0" prefHeight="17.0" prefWidth="243.0" text="just sent a mail to">
+         <font>
+            <Font name="System Italic" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="64.0" layoutY="177.0" prefHeight="30.0" prefWidth="218.0" text="santhoshvelr@gmail.com" textFill="#0600ff">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="65.0" layoutY="207.0" prefHeight="30.0" prefWidth="218.0" text="santhoshvelr@yahoo.com" textFill="#0600ff">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

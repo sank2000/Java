@@ -1,5 +1,3 @@
-package trident;
-
 import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.layout.*;
@@ -17,7 +15,7 @@ public class ConfirmBox {
             e.consume();
         });
         window.initModality(Modality.APPLICATION_MODAL);
-        window.getIcons().add(new Image("/trident/img/trident.png"));
+        window.getIcons().add(new Image("/img/trident.png"));
         window.setResizable(false);
         window.setTitle(title);
         window.setMinWidth(250);
@@ -34,7 +32,11 @@ public class ConfirmBox {
             window.close();
         });
         VBox layout = new VBox(10);
-        layout.getChildren().addAll(label, yesButton, noButton);
+        HBox lay=new HBox(10);
+        lay.setAlignment(Pos.CENTER);
+        lay.getChildren().addAll(yesButton, noButton);
+        layout.getChildren().addAll(label, lay);
+       // layout.getChildren().addAll(label, yesButton, noButton);
         layout.setAlignment(Pos.CENTER);
         Scene scene = new Scene(layout);
         window.setScene(scene);

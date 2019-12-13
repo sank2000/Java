@@ -1,6 +1,4 @@
-package trident;
 
-import java.io.FileInputStream;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,8 +11,7 @@ public class Trident extends Application {
     @Override
     public void start(Stage stage) throws Exception 
     {
-        //FileInputStream i=new FileInputStream("E:\\Codes\\NetBeansProjects\\Trident\\src\\trident\\img\\trident.png");
-        Image img=new Image("/trident/img/trident.png");
+        Image img=new Image("/img/trident.png");
         FXMLLoader root=new FXMLLoader();
         root.setLocation(getClass().getResource("FXMLDocument.fxml"));
         Parent root1 =root.load();
@@ -23,7 +20,7 @@ public class Trident extends Application {
         Scene scene = new Scene(root1);
         stage.setTitle("Trident Text Editor");
         stage.getIcons().add(img);
-        stage.setResizable(false);
+       // stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }

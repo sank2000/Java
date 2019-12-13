@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="366.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="trident.FontController">
+<AnchorPane id="AnchorPane" prefHeight="366.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FontController">
    <children>
       <Slider fx:id="size" blockIncrement="1.0" layoutX="99.0" layoutY="213.0" prefHeight="58.0" prefWidth="256.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="16.0" />
       <ComboBox fx:id="font" layoutX="54.0" layoutY="93.0" prefWidth="150.0" />

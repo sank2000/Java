@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="212.0" prefWidth="510.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+   <children>
+      <Label layoutX="15.0" layoutY="22.0" prefHeight="69.0" prefWidth="447.0" text="   Welcome to Trident Text Editor" textFill="#03c4ff">
+         <font>
+            <Font name="System Bold Italic" size="22.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="80.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/trident.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Label>
+      <Label layoutX="36.0" layoutY="117.0" prefHeight="17.0" prefWidth="143.0" text="In order to">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="80.0" layoutY="144.0" prefHeight="17.0" prefWidth="331.0" text="1. Create New File                        File -&gt; New">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="80.0" layoutY="165.0" prefHeight="17.0" prefWidth="331.0" text="2. To Open Existing  File               File -&gt; Open">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
